@@ -10,4 +10,4 @@
 
 :x: Усложняет код из-за создания дополнительных классов
 
-:arrow_forward: Interface Runnable
+:arrow_forward: `Interface Runnable`

@@ -10,9 +10,9 @@
 
 :x: Нарушение принципа Барбары Лисков
 
-:arrow_forward: public abstract class AbstractList<E>
+:arrow_forward: `public abstract class AbstractList<E>`
   
-:arrow_forward: public abstract class AbstractSet<E>
+:arrow_forward: `public abstract class AbstractSet<E>`
 
-:arrow_forward: public abstract class AbstractMap<E>
+:arrow_forward: `public abstract class AbstractMap<E>`
 

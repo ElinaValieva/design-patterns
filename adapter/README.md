@@ -8,6 +8,6 @@
 
 :arrow_forward: public static List<T> asList(T... a)
   
-:arrow_forward: public static ArrayList<T> list(Enumeration<T> e)
+:arrow_forward: `public static ArrayList<T> list(Enumeration<T> e)`
   
-:arrow_forward: public static Enumeration<T> enumeration(Collection<T> c)
+:arrow_forward: `public static Enumeration<T> enumeration(Collection<T> c)`

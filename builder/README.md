@@ -8,4 +8,4 @@
 
 :x: Усложняет код из-за создания дополнительных классов
 
-:arrow_forward: StringBuilder
+:arrow_forward: `StringBuilder`

@@ -8,6 +8,6 @@
 
 :x: Не оправдан, если можно обойтись циклом
 
-:arrow_forward: public interface Iterator<E>
+:arrow_forward: `public interface Iterator<E>`
   
-:arrow_forward: public interface Enumeration<E>
+:arrow_forward: `public interface Enumeration<E>`
