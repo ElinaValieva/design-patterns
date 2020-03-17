@@ -11,3 +11,5 @@
 :running: [Template Method](https://github.com/ElinaValieva/design-patterns/tree/master/template-method)
 
 :running: [Strategy](https://github.com/ElinaValieva/design-patterns/tree/master/strategy)
+
+:running: [Visitor](https://github.com/ElinaValieva/design-patterns/tree/master/visitor)
