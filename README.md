@@ -9,3 +9,5 @@
 :running: [Iterator](https://github.com/ElinaValieva/design-patterns/tree/master/iterator)
 
 :running: [Template Method](https://github.com/ElinaValieva/design-patterns/tree/master/template-method)
+
+:running: [Strategy](https://github.com/ElinaValieva/design-patterns/tree/master/strategy)
