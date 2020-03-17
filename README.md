@@ -2,4 +2,8 @@
 
 :hammer_and_wrench: [Builder](https://github.com/ElinaValieva/design-patterns/tree/master/builder)
 
-:stars: [Adapter](https://github.com/ElinaValieva/design-patterns/tree/master/adapter)
+:memo: [Adapter](https://github.com/ElinaValieva/design-patterns/tree/master/adapter)
+
+:running: [Command](https://github.com/ElinaValieva/design-patterns/tree/master/command)
+
+:running: [Iterator](https://github.com/ElinaValieva/design-patterns/tree/master/iterator)
