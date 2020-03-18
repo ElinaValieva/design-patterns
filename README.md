@@ -2,6 +2,8 @@
 
 :hammer_and_wrench: [Builder](https://github.com/ElinaValieva/design-patterns/tree/master/builder)
 
+:hammer_and_wrench: [Prototype](https://github.com/ElinaValieva/design-patterns/tree/master/prototype)
+
 :memo: [Adapter](https://github.com/ElinaValieva/design-patterns/tree/master/adapter)
 
 :memo: [Composite](https://github.com/ElinaValieva/design-patterns/tree/master/composite)
