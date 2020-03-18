@@ -4,6 +4,10 @@
 
 :hammer_and_wrench: [Prototype](https://github.com/ElinaValieva/design-patterns/tree/master/prototype)
 
+:hammer_and_wrench: [Abstract Factory](https://github.com/ElinaValieva/design-patterns/tree/master/abstract_factory)
+
+:hammer_and_wrench: [Factory Method](https://github.com/ElinaValieva/design-patterns/tree/master/factory_method)
+
 :memo: [Adapter](https://github.com/ElinaValieva/design-patterns/tree/master/adapter)
 
 :memo: [Composite](https://github.com/ElinaValieva/design-patterns/tree/master/composite)
