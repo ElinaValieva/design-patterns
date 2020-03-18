@@ -4,6 +4,8 @@
 
 :memo: [Adapter](https://github.com/ElinaValieva/design-patterns/tree/master/adapter)
 
+:memo: [Composite](https://github.com/ElinaValieva/design-patterns/tree/master/composite)
+
 :running: [Command](https://github.com/ElinaValieva/design-patterns/tree/master/command)
 
 :running: [Iterator](https://github.com/ElinaValieva/design-patterns/tree/master/iterator)
