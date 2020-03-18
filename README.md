@@ -6,6 +6,8 @@
 
 :memo: [Composite](https://github.com/ElinaValieva/design-patterns/tree/master/composite)
 
+:running: [Chain of responsibilities](https://github.com/ElinaValieva/design-patterns/tree/master/chain-responsibilities)
+
 :running: [Command](https://github.com/ElinaValieva/design-patterns/tree/master/command)
 
 :running: [Iterator](https://github.com/ElinaValieva/design-patterns/tree/master/iterator)
