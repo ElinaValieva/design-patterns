@@ -1,4 +1,4 @@
-# Java Design Patterns
+# Java Design Patterns ![Java CI with Gradle](https://github.com/ElinaValieva/design-patterns/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
 
 :hammer_and_wrench: [Builder](https://github.com/ElinaValieva/design-patterns/tree/master/builder)
 
