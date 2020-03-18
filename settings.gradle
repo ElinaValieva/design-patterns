@@ -1,0 +1,7 @@
+include 'command'
+include 'adapter'
+include 'builder'
+include 'template-method'
+include 'visitor'
+include 'iterator'
+include 'strategy'
