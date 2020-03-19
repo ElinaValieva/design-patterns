@@ -16,7 +16,7 @@ public class AuthenticationMediator implements Mediator {
     @Override
     public void notify(Component sender, String event) {
         if (sender instanceof CheckBox && event.equals("check")) {
-            title = (((CheckBox) sender).getEnabled()) ? "log in" : "register";
+            title = (((CheckBox) sender).isEnabled()) ? "log in" : "register";
         }
 
         if (sender instanceof Button && event.equals("click")) {

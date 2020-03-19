@@ -9,13 +9,13 @@ public class CheckBox extends Component {
 
     private Mediator mediator;
 
-    private Boolean enabled;
+    private boolean enabled;
 
     public CheckBox(Mediator mediator) {
         super(mediator);
     }
 
-    public Boolean getEnabled() {
+    public boolean isEnabled() {
         return enabled;
     }
 
