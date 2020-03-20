@@ -7,7 +7,7 @@ import com.patterns.mediator.model.Component;
  */
 public interface Mediator {
 
-    void notify(Component sender, String event);
+    void notify(Component sender, Component.Event event);
 
-    String getTitle();
+    void registerComponents(Component component);
 }

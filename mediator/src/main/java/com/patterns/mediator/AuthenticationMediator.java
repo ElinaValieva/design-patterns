@@ -11,25 +11,49 @@ import com.patterns.mediator.model.TextBox;
  */
 public class AuthenticationMediator implements Mediator {
 
-    private String title;
+    private CheckBox checkBox;
+
+    private Button button;
+
+    private TextBox textBox;
+
 
     @Override
-    public void notify(Component sender, String event) {
-        if (sender instanceof CheckBox && event.equals("check")) {
-            title = (((CheckBox) sender).isEnabled()) ? "log in" : "register";
+    public void notify(Component sender, Component.Event event) {
+        sender.setMediator(this);
+
+        if (event == Component.Event.TICK) {
+            System.out.println("CheckBox: tick ...");
+            checkBox.setMediator(this);
+            checkBox.tick();
         }
 
-        if (sender instanceof Button && event.equals("click")) {
-            title = "click";
+        if (event == Component.Event.CLICK) {
+            System.out.println("Button: click ...");
+            button.setMediator(this);
+            button.tick();
         }
 
-        if (sender instanceof TextBox && event.equals("keypress")) {
-            title = "textBox";
+        if (sender instanceof TextBox && event == Component.Event.KEYPRESS) {
+            System.out.println("TextBox: keypress ...");
+            textBox.setText("Typing");
+            textBox.click();
         }
     }
 
     @Override
-    public String getTitle() {
-        return title;
+    public void registerComponents(Component component) {
+        if (component instanceof TextBox)
+            this.textBox = (TextBox) component;
+        else this.textBox = new TextBox();
+
+        if (component instanceof CheckBox)
+            this.checkBox = (CheckBox) component;
+        this.checkBox = new CheckBox();
+
+        if (component instanceof Button)
+            this.button = (Button) component;
+
+        else this.button = new Button();
     }
 }

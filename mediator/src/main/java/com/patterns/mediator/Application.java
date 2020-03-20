@@ -1,5 +1,6 @@
 package com.patterns.mediator;
 
+import com.patterns.mediator.model.Component;
 import com.patterns.mediator.model.TextBox;
 
 /**
@@ -9,8 +10,8 @@ public class Application {
 
     public static void main(String[] args) {
         Mediator mediator = new AuthenticationMediator();
-        mediator.notify(new TextBox(mediator), "click");
-
-        System.out.println(mediator.getTitle());
+        TextBox sender = new TextBox();
+        mediator.registerComponents(sender);
+        mediator.notify(sender, Component.Event.KEYPRESS);
     }
 }

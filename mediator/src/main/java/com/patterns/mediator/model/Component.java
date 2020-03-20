@@ -9,15 +9,26 @@ public class Component {
 
     private Mediator mediator;
 
-    public Component(Mediator mediator) {
+    Component() {
+    }
+
+    public void setMediator(Mediator mediator) {
         this.mediator = mediator;
     }
 
-    void click() {
-        mediator.notify(this, "click");
+    public void click() {
+        mediator.notify(this, Event.CLICK);
     }
 
-    void keypress() {
-        mediator.notify(this, "keypress");
+    public void keypress() {
+        mediator.notify(this, Event.KEYPRESS);
+    }
+
+    public void tick() {
+        mediator.notify(this, Event.TICK);
+    }
+
+    public enum Event {
+        CLICK, KEYPRESS, TICK
     }
 }
