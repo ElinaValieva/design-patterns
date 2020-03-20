@@ -1,4 +1,4 @@
-# :milky_way: Mediator
+# :part_alternation_mark: Mediator
 
 :heavy_check_mark: Поведенческий паттерн, позволяющий уменьшить связи между объектами помещая их в один класс посредник
 

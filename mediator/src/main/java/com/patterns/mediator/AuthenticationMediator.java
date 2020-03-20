@@ -17,7 +17,6 @@ public class AuthenticationMediator implements Mediator {
 
     private TextBox textBox;
 
-
     @Override
     public void notify(Component sender, Component.Event event) {
         sender.setMediator(this);
