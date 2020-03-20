@@ -12,6 +12,10 @@
 
 :memo: [Composite](https://github.com/ElinaValieva/design-patterns/tree/master/composite)
 
+:memo: [Facade](https://github.com/ElinaValieva/design-patterns/tree/master/facade)
+
+:running: [Mediator](https://github.com/ElinaValieva/design-patterns/tree/master/mediator)
+
 :running: [Chain of responsibilities](https://github.com/ElinaValieva/design-patterns/tree/master/chain-responsibilities)
 
 :running: [Command](https://github.com/ElinaValieva/design-patterns/tree/master/command)
