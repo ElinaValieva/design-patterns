@@ -27,3 +27,7 @@
 :running: [Strategy](https://github.com/ElinaValieva/design-patterns/tree/master/strategy)
 
 :running: [Visitor](https://github.com/ElinaValieva/design-patterns/tree/master/visitor)
+
+:running: [Observer](https://github.com/ElinaValieva/design-patterns/tree/master/observer)
+
+:running: [State](https://github.com/ElinaValieva/design-patterns/tree/master/state)
