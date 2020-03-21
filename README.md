@@ -1,33 +1,16 @@
 # Java Design Patterns ![Java CI with Gradle](https://github.com/ElinaValieva/design-patterns/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
 
-:hammer_and_wrench: [Builder](https://github.com/ElinaValieva/design-patterns/tree/master/builder)
 
-:hammer_and_wrench: [Prototype](https://github.com/ElinaValieva/design-patterns/tree/master/prototype)
+|Creational|Structural|Behavioral|
+|--|--|--|
+|:hammer_and_wrench: [Builder](https://github.com/ElinaValieva/design-patterns/tree/master/builder)|:memo: [Adapter](https://github.com/ElinaValieva/design-patterns/tree/master/adapter)|:running: [Chain of responsibilities](https://github.com/ElinaValieva/design-patterns/tree/master/chain-responsibilities)|
+|:hammer_and_wrench: [Prototype](https://github.com/ElinaValieva/design-patterns/tree/master/prototype)|:memo: [Composite](https://github.com/ElinaValieva/design-patterns/tree/master/composite)| :running: [Command](https://github.com/ElinaValieva/design-patterns/tree/master/command)|
+|:hammer_and_wrench: [Abstract Factory](https://github.com/ElinaValieva/design-patterns/tree/master/abstract_factory)|:memo: [Facade](https://github.com/ElinaValieva/design-patterns/tree/master/facade)| :running: [Iterator](https://github.com/ElinaValieva/design-patterns/tree/master/iterator)|
+|:hammer_and_wrench: [Factory Method](https://github.com/ElinaValieva/design-patterns/tree/master/factory_method)||:running: [Memento](https://github.com/ElinaValieva/design-patterns/tree/master/memento)|
+|||:running: [Mediator](https://github.com/ElinaValieva/design-patterns/tree/master/mediator)|
+|||:running: [Observer](https://github.com/ElinaValieva/design-patterns/tree/master/observer)|
+|||:running: [State](https://github.com/ElinaValieva/design-patterns/tree/master/state)|
+|||:running: [Strategy](https://github.com/ElinaValieva/design-patterns/tree/master/strategy)|
+|||:running: [Template Method](https://github.com/ElinaValieva/design-patterns/tree/master/template-method)|
+|||:running: [Visitor](https://github.com/ElinaValieva/design-patterns/tree/master/visitor)|
 
-:hammer_and_wrench: [Abstract Factory](https://github.com/ElinaValieva/design-patterns/tree/master/abstract_factory)
-
-:hammer_and_wrench: [Factory Method](https://github.com/ElinaValieva/design-patterns/tree/master/factory_method)
-
-:memo: [Adapter](https://github.com/ElinaValieva/design-patterns/tree/master/adapter)
-
-:memo: [Composite](https://github.com/ElinaValieva/design-patterns/tree/master/composite)
-
-:memo: [Facade](https://github.com/ElinaValieva/design-patterns/tree/master/facade)
-
-:running: [Mediator](https://github.com/ElinaValieva/design-patterns/tree/master/mediator)
-
-:running: [Chain of responsibilities](https://github.com/ElinaValieva/design-patterns/tree/master/chain-responsibilities)
-
-:running: [Command](https://github.com/ElinaValieva/design-patterns/tree/master/command)
-
-:running: [Iterator](https://github.com/ElinaValieva/design-patterns/tree/master/iterator)
-
-:running: [Template Method](https://github.com/ElinaValieva/design-patterns/tree/master/template-method)
-
-:running: [Strategy](https://github.com/ElinaValieva/design-patterns/tree/master/strategy)
-
-:running: [Visitor](https://github.com/ElinaValieva/design-patterns/tree/master/visitor)
-
-:running: [Observer](https://github.com/ElinaValieva/design-patterns/tree/master/observer)
-
-:running: [State](https://github.com/ElinaValieva/design-patterns/tree/master/state)
