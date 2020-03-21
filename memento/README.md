@@ -1,4 +1,4 @@
-# :arrows_counterclockwise: Memento
+# :orange_book: Memento
 
 :heavy_check_mark: Поведенческий паттерн, позволяющий сохранять и восстанавливать прошлые состояния объектов
 
