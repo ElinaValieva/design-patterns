@@ -1,1 +1,1 @@
-include 'strategy'
+rootProject.name = 'strategy'

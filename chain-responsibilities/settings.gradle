@@ -1,2 +1,2 @@
-include 'chain-responsibilities'
+rootProject.name = 'chain-responsibilities'
 

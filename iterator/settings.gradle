@@ -1,1 +1,1 @@
-include 'iterator'
+rootProject.name = 'iterator'
