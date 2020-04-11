@@ -1,13 +1,13 @@
-package com.patterns.singleton;
+package com.patterns.singleton.lazy.locked;
 
-public class Singleton {
+class Singleton {
 
     private static Singleton singleton;
 
     private Singleton() {
     }
 
-    public static Singleton getInstance() {
+    static synchronized Singleton getInstance() {
         if (singleton == null)
             singleton = new Singleton();
 
