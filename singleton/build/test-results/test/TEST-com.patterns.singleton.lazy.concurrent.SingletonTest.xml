@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.patterns.singleton.lazy.concurrent.SingletonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-11T19:22:49" hostname="DESKTOP-3PQ3LCL" time="0.007">
+  <properties/>
+  <testcase name="getInstance" classname="com.patterns.singleton.lazy.concurrent.SingletonTest" time="0.007"/>
+  <system-out><![CDATA[com.patterns.singleton.lazy.concurrent.Singleton@7e6cf57a
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
