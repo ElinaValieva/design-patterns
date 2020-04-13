@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public final class Passport implements Cloneable{
 
-    private Integer number;
+    private final Integer number;
 
-    private Integer serialNumber;
+    private final Integer serialNumber;
 
-    private Type type;
+    private final Type type;
 
     public enum Type {
         FOREIGN, RUSSIAN
