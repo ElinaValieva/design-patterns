@@ -1,22 +1,20 @@
 package com.patterns.caching.cache;
 
-import com.patterns.caching.model.User;
-
 import java.util.List;
 
-public interface Cache {
+public interface Cache<T> {
 
-    User get(String id);
+    T get(String id);
 
-    User getLru();
+    T getLru();
 
-    List<User> getCache();
+    List<T> getCache();
 
     boolean contains(String id);
 
     boolean isFull();
 
-    void set(String id, User user);
+    void set(String id, T user);
 
     void setCapacity(Integer capacity);
 

@@ -1,33 +1,39 @@
 package com.patterns.caching;
 
 import com.patterns.caching.cache.CachePolicy;
-import com.patterns.caching.model.User;
+import com.patterns.caching.database.DatabaseManager;
+import com.patterns.caching.model.BaseModel;
 
-public class AppManager {
+public class AppManager<T extends BaseModel> {
 
     private static CachePolicy cachePolicy;
+    private CacheManager<T> cacheManager;
 
-    public static void initCacheCapacity(Integer capacity) {
-        CacheManager.initCapacity(capacity);
+    public AppManager(DatabaseManager<T> databaseManager) {
+        this.cacheManager = new CacheManager<>(databaseManager);
     }
 
-    public static User get(String id) {
+    public void initCacheCapacity(Integer capacity) {
+        cacheManager.initCapacity(capacity);
+    }
+
+    public T get(String id) {
         if (cachePolicy == CachePolicy.BEHIND)
-            return CacheManager.readThroughBackPolicy(id);
+            return cacheManager.readThroughBackPolicy(id);
         if (cachePolicy == CachePolicy.AROUND || cachePolicy == CachePolicy.THROUGH)
-            return CacheManager.readThrough(id);
+            return cacheManager.readThrough(id);
         if (cachePolicy == CachePolicy.ASIDE)
-            return CacheManager.readAside(id);
+            return cacheManager.readAside(id);
         return null;
     }
 
-    public static void save(User user) {
+    public void save(T entity) {
         if (cachePolicy == CachePolicy.BEHIND)
-            CacheManager.writeBehind(user);
+            cacheManager.writeBehind(entity);
         if (cachePolicy == CachePolicy.THROUGH)
-            CacheManager.writeThrough(user);
+            cacheManager.writeThrough(entity);
         if (cachePolicy == CachePolicy.AROUND)
-            CacheManager.writeAround(user);
-        else CacheManager.writeAside(user);
+            cacheManager.writeAround(entity);
+        else cacheManager.writeAside(entity);
     }
 }

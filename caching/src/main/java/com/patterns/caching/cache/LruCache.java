@@ -1,40 +1,40 @@
 package com.patterns.caching.cache;
 
-import com.patterns.caching.model.User;
+import com.patterns.caching.model.BaseModel;
 
 import java.util.*;
 
-public class LruCache implements Cache {
+public class LruCache<T extends BaseModel> implements Cache<T> {
 
     private Integer capacity;
-    private Map<String, Node> cache = new HashMap<>();
-    private Node start;
-    private Node end;
+    private final Map<String, Node<T>> cache = new HashMap<>();
+    private Node<T> start;
+    private Node<T> end;
 
     public LruCache(Integer capacity) {
         this.capacity = capacity;
     }
 
     @Override
-    public User get(String id) {
+    public T get(String id) {
         if (cache.containsKey(id)) {
-            Node node = cache.get(id);
+            Node<T> node = cache.get(id);
             remove(node);
             changeHead(node);
-            return node.user;
+            return node.value;
         }
         return null;
     }
 
     @Override
-    public void set(String id, User user) {
+    public void set(String id, T value) {
         if (cache.containsKey(id)) {
-            Node node = cache.get(id);
-            node.user = user;
+            Node<T> node = cache.get(id);
+            node.value = value;
             remove(node);
             changeHead(node);
         } else {
-            Node node = new Node(id, user);
+            Node<T> node = new Node<>(id, value);
             if (cache.size() > capacity) {
                 cache.remove(end.id);
                 remove(end);
@@ -60,8 +60,8 @@ public class LruCache implements Cache {
     }
 
     @Override
-    public User getLru() {
-        return end.user;
+    public T getLru() {
+        return end.value;
     }
 
     @Override
@@ -79,18 +79,18 @@ public class LruCache implements Cache {
     }
 
     @Override
-    public List<User> getCache() {
-        List<User> users = new ArrayList<>();
-        Node temp = this.start;
+    public List<T> getCache() {
+        List<T> users = new ArrayList<>();
+        Node<T> temp = this.start;
         while (temp != null) {
-            users.add(temp.user);
+            users.add(temp.value);
             temp = temp.next;
         }
 
         return users;
     }
 
-    private void changeHead(Node node) {
+    private void changeHead(Node<T> node) {
         node.next = this.start;
         node.previous = null;
         if (this.start != null)
@@ -100,7 +100,7 @@ public class LruCache implements Cache {
             this.end = this.start;
     }
 
-    private void remove(Node node) {
+    private void remove(Node<T> node) {
         if (node.previous != null)
             node.previous.next = node.next;
         else this.start = node.next;
@@ -110,15 +110,15 @@ public class LruCache implements Cache {
         else this.end = node.previous;
     }
 
-    static class Node {
+    static class Node<T> {
         String id;
-        User user;
-        Node next;
-        Node previous;
+        T value;
+        Node<T> next;
+        Node<T> previous;
 
-        public Node(String id, User user) {
+        public Node(String id, T value) {
             this.id = id;
-            this.user = user;
+            this.value = value;
         }
     }
 }

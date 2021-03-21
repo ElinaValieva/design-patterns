@@ -1,23 +1,23 @@
 package com.patterns.caching.database;
 
-import com.patterns.caching.model.User;
+import com.patterns.caching.model.BaseModel;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class DatabaseManager {
+public class DatabaseManager<T extends BaseModel> {
 
-    private static Map<String, User> dictionary = new HashMap<>();
+    private Map<String, T> dictionary = new HashMap<>();
 
-    public static User selectById(String id) {
+    public T selectById(String id) {
         return dictionary.get(id);
     }
 
-    public static User update(User user) {
+    public T update(T user) {
         return dictionary.put(user.getId(), user);
     }
 
-    public static User insert(User user) {
+    public T insert(T user) {
         return dictionary.putIfAbsent(user.getId(), user);
     }
 }

@@ -3,83 +3,90 @@ package com.patterns.caching;
 import com.patterns.caching.cache.Cache;
 import com.patterns.caching.cache.LruCache;
 import com.patterns.caching.database.DatabaseManager;
-import com.patterns.caching.model.User;
+import com.patterns.caching.model.BaseModel;
 
 import java.util.Optional;
 
 
-public class CacheManager {
+public class CacheManager<T extends BaseModel> {
 
-    private static Cache cache;
+    private Cache<T> cache;
+    private final DatabaseManager<T> databaseManager;
+    private static final int DEFAULT_CAPACITY = 10;
 
-    public static void initCapacity(Integer capacity) {
+    public CacheManager(DatabaseManager<T> databaseManager) {
+        this.databaseManager = databaseManager;
+        initCapacity(DEFAULT_CAPACITY);
+    }
+
+    public void initCapacity(Integer capacity) {
         if (cache == null)
-            cache = new LruCache(capacity);
+            cache = new LruCache<T>(capacity);
         else cache.setCapacity(capacity);
     }
 
-    public static User readThrough(String id) {
+    public T readThrough(String id) {
         if (cache.contains(id)) {
             return cache.get(id);
         }
-        User user = DatabaseManager.selectById(id);
-        cache.set(id, user);
-        return user;
+        T entity = databaseManager.selectById(id);
+        cache.set(id, entity);
+        return entity;
     }
 
-    public static User readThroughBackPolicy(String id) {
+    public T readThroughBackPolicy(String id) {
         if (cache.contains(id))
             return cache.get(id);
-        User user = DatabaseManager.selectById(id);
+        T entity = databaseManager.selectById(id);
         if (cache.isFull()) {
-            User cacheLru = cache.getLru();
-            DatabaseManager.update(cacheLru);
+            T cacheLru = cache.getLru();
+            databaseManager.update(cacheLru);
         }
-        cache.set(id, user);
-        return user;
+        cache.set(id, entity);
+        return entity;
     }
 
-    public static User readAside(String id) {
+    public T readAside(String id) {
         if (cache.contains(id))
             return cache.get(id);
-        User user = DatabaseManager.selectById(id);
-        Optional.ofNullable(user).ifPresent(e -> cache.set(id, e));
-        return user;
+        T entity = databaseManager.selectById(id);
+        Optional.ofNullable(entity).ifPresent(e -> cache.set(id, e));
+        return entity;
     }
 
-    public static void writeThrough(User user) {
-        if (cache.contains(user.getId())) {
-            DatabaseManager.update(user);
-        } else DatabaseManager.insert(user);
-        cache.set(user.getId(), user);
+    public void writeThrough(T entity) {
+        if (cache.contains(entity.getId())) {
+            databaseManager.update(entity);
+        } else databaseManager.insert(entity);
+        cache.set(entity.getId(), entity);
     }
 
-    public static void writeAround(User user) {
-        if (cache.contains(user.getId())) {
-            DatabaseManager.update(user);
-            cache.invalidate(user.getId());
-        } else DatabaseManager.insert(user);
+    public void writeAround(T entity) {
+        if (cache.contains(entity.getId())) {
+            databaseManager.update(entity);
+            cache.invalidate(entity.getId());
+        } else databaseManager.insert(entity);
     }
 
-    public static void writeBehind(User user) {
-        if (cache.isFull() && !cache.contains(user.getId())) {
-            User cacheLru = cache.getLru();
-            DatabaseManager.update(cacheLru);
+    public void writeBehind(T entity) {
+        if (cache.isFull() && !cache.contains(entity.getId())) {
+            T cacheLru = cache.getLru();
+            databaseManager.update(cacheLru);
         }
-        cache.set(user.getId(), user);
+        cache.set(entity.getId(), entity);
     }
 
-    public static void writeAside(User user) {
-        DatabaseManager.update(user);
-        cache.invalidate(user.getId());
+    public void writeAside(T entity) {
+        databaseManager.update(entity);
+        cache.invalidate(entity.getId());
     }
 
-    public static void clear() {
+    public void clear() {
         cache.clear();
     }
 
-    public static void flush() {
+    public void flush() {
         cache.getCache().parallelStream()
-                .forEach(DatabaseManager::update);
+                .forEach(databaseManager::update);
     }
 }
