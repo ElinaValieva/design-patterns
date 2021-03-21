@@ -2,7 +2,7 @@ package com.patterns.caching;
 
 import com.patterns.caching.cache.Cache;
 import com.patterns.caching.cache.LruCache;
-import com.patterns.caching.database.DatabaseManager;
+import com.patterns.caching.database.Database;
 import com.patterns.caching.model.BaseModel;
 
 import java.util.Optional;
@@ -11,10 +11,10 @@ import java.util.Optional;
 public class CacheManager<T extends BaseModel> {
 
     private Cache<T> cache;
-    private final DatabaseManager<T> databaseManager;
+    private final Database<T> databaseManager;
     private static final int DEFAULT_CAPACITY = 10;
 
-    public CacheManager(DatabaseManager<T> databaseManager) {
+    public CacheManager(Database<T> databaseManager) {
         this.databaseManager = databaseManager;
         initCapacity(DEFAULT_CAPACITY);
     }

@@ -1,7 +1,7 @@
 package com.patterns.caching;
 
 import com.patterns.caching.cache.CachePolicy;
-import com.patterns.caching.database.DatabaseManager;
+import com.patterns.caching.database.Database;
 import com.patterns.caching.model.BaseModel;
 
 public class AppManager<T extends BaseModel> {
@@ -9,8 +9,8 @@ public class AppManager<T extends BaseModel> {
     private static CachePolicy cachePolicy;
     private CacheManager<T> cacheManager;
 
-    public AppManager(DatabaseManager<T> databaseManager) {
-        this.cacheManager = new CacheManager<>(databaseManager);
+    public AppManager(Database<T> databaseManager) {
+        this.cacheManager = new CacheManager<T>(databaseManager);
     }
 
     public void initCacheCapacity(Integer capacity) {

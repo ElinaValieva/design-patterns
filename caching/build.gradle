@@ -18,4 +18,7 @@ dependencies {
 
     testCompileOnly 'org.projectlombok:lombok:1.18.16'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+    implementation group: 'org.mongodb', name: 'mongodb-driver', version: '3.6.3'
+    implementation group: 'org.mongodb', name: 'mongodb-driver-core', version: '4.2.2'
+    implementation group: 'org.mongodb', name: 'bson', version: '4.2.2'
 }
