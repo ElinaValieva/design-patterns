@@ -2,7 +2,7 @@ package com.patterns.caching.database;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import com.patterns.caching.factory.ModelFactoryImpl;
+import com.patterns.caching.factory.ModelFactoryCreator;
 import com.patterns.caching.model.BaseModel;
 import com.patterns.caching.factory.ModelFactory;
 import lombok.SneakyThrows;
@@ -14,15 +14,17 @@ import java.util.Map;
 public class DatabaseManager<T extends BaseModel> implements Database<T> {
 
     private Map<String, T> dictionary;
+    private final Class<T> clazz;
     private final ModelFactory<T> modelFactory;
     private MongoDatabase mongoDatabase;
     private boolean useMongo;
 
-    public DatabaseManager(boolean useMongo) {
+    public DatabaseManager(Class<T> clazz, boolean useMongo) {
+        this.clazz = clazz;
         this.useMongo = useMongo;
         if (!useMongo)
             createVirtual();
-        this.modelFactory = new ModelFactoryImpl<>();
+        this.modelFactory = new ModelFactoryCreator<>();
     }
 
     private void createVirtual() {
@@ -44,7 +46,7 @@ public class DatabaseManager<T extends BaseModel> implements Database<T> {
                     .getCollection(DatabaseConstants.TableName)
                     .find(new Document("id", id))
                     .first();
-            return modelFactory.create(document);
+            return modelFactory.create(document, clazz);
         }
         return dictionary.get(id);
     }

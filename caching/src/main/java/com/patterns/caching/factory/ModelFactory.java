@@ -6,7 +6,7 @@ import org.bson.Document;
 
 public interface ModelFactory<T extends BaseModel> {
 
-    T create(Document document);
+    T create(Document document, Class<T> tClass);
 
     Document create(T entity);
 }
