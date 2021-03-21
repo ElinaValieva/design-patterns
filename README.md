@@ -15,4 +15,6 @@
 
 &nbsp;
 
-
+|Architectural|
+|--|
+|:house_with_garden: [Caching](https://github.com/ElinaValieva/design-patterns/tree/master/caching)|
