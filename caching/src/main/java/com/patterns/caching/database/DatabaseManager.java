@@ -53,7 +53,7 @@ public class DatabaseManager<T extends BaseModel> implements Database<T> {
     public void update(T entity) {
         if (useMongo) {
             initConnection();
-            mongoDatabase.getCollection(DatabaseConstants.TableName).updateOne(new Document("id", entity.getId()), entity.init());
+            mongoDatabase.getCollection(DatabaseConstants.TableName).updateOne(new Document("id", entity.getId()), modelFactory.create(entity));
         }
         dictionary.put(entity.getId(), entity);
     }
@@ -62,7 +62,7 @@ public class DatabaseManager<T extends BaseModel> implements Database<T> {
     public void insert(T entity) {
         if (useMongo) {
             initConnection();
-            mongoDatabase.getCollection(DatabaseConstants.TableName).insertOne(entity.init());
+            mongoDatabase.getCollection(DatabaseConstants.TableName).insertOne(modelFactory.create(entity));
         }
         dictionary.putIfAbsent(entity.getId(), entity);
     }
