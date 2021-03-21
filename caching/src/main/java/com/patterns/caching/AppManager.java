@@ -1,7 +1,7 @@
-package com.example.caching;
+package com.patterns.caching;
 
-import com.example.caching.cache.CachePolicy;
-import com.example.caching.model.User;
+import com.patterns.caching.cache.CachePolicy;
+import com.patterns.caching.model.User;
 
 public class AppManager {
 

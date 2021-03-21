@@ -1,9 +1,9 @@
-package com.example.caching;
+package com.patterns.caching;
 
-import com.example.caching.cache.Cache;
-import com.example.caching.cache.LruCache;
-import com.example.caching.database.DatabaseManager;
-import com.example.caching.model.User;
+import com.patterns.caching.cache.Cache;
+import com.patterns.caching.cache.LruCache;
+import com.patterns.caching.database.DatabaseManager;
+import com.patterns.caching.model.User;
 
 import java.util.Optional;
 

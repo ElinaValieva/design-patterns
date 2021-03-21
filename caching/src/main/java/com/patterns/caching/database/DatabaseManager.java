@@ -1,6 +1,6 @@
-package com.example.caching.database;
+package com.patterns.caching.database;
 
-import com.example.caching.model.User;
+import com.patterns.caching.model.User;
 
 import java.util.HashMap;
 import java.util.Map;

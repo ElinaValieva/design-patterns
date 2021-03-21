@@ -1,6 +1,6 @@
-package com.example.caching.cache;
+package com.patterns.caching.cache;
 
-import com.example.caching.model.User;
+import com.patterns.caching.model.User;
 
 import java.util.List;
 

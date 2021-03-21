@@ -1,4 +1,4 @@
-package com.example.caching.model;
+package com.patterns.caching.model;
 
 import lombok.Data;
 
