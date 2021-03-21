@@ -22,3 +22,5 @@ include 'visitor'
 include 'observer'
 include 'dependency-injection'
 include 'value-object'
+include 'caching'
+
