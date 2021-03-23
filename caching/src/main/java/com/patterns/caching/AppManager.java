@@ -1,16 +1,18 @@
 package com.patterns.caching;
 
+import com.patterns.caching.cache.CacheManager;
 import com.patterns.caching.cache.CachePolicy;
 import com.patterns.caching.database.Database;
 import com.patterns.caching.model.BaseModel;
 
 public class AppManager<T extends BaseModel> {
 
-    private static CachePolicy cachePolicy;
-    private CacheManager<T> cacheManager;
+    private final CachePolicy cachePolicy;
+    private final CacheManager<T> cacheManager;
 
-    public AppManager(Database<T> databaseManager) {
+    public AppManager(Database<T> databaseManager, CachePolicy cachePolicy) {
         this.cacheManager = new CacheManager<T>(databaseManager);
+        this.cachePolicy = cachePolicy;
     }
 
     public void initCacheCapacity(Integer capacity) {

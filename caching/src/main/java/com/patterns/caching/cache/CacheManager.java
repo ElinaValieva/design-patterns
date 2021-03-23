@@ -1,7 +1,5 @@
-package com.patterns.caching;
+package com.patterns.caching.cache;
 
-import com.patterns.caching.cache.Cache;
-import com.patterns.caching.cache.LruCache;
 import com.patterns.caching.database.Database;
 import com.patterns.caching.model.BaseModel;
 
