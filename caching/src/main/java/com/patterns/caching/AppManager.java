@@ -11,7 +11,7 @@ public class AppManager<T extends BaseModel> {
     private final CacheManager<T> cacheManager;
 
     public AppManager(Database<T> databaseManager, CachePolicy cachePolicy) {
-        this.cacheManager = new CacheManager<T>(databaseManager);
+        this.cacheManager = new CacheManager<>(databaseManager);
         this.cachePolicy = cachePolicy;
     }
 

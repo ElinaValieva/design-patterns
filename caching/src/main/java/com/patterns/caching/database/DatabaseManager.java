@@ -2,6 +2,7 @@ package com.patterns.caching.database;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
+import com.patterns.caching.config.ConfigReader;
 import com.patterns.caching.factory.ModelFactoryCreator;
 import com.patterns.caching.model.BaseModel;
 import com.patterns.caching.factory.ModelFactory;
@@ -10,6 +11,7 @@ import org.bson.Document;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class DatabaseManager<T extends BaseModel> implements Database<T> {
 
@@ -18,10 +20,14 @@ public class DatabaseManager<T extends BaseModel> implements Database<T> {
     private final ModelFactory<T> modelFactory;
     private MongoDatabase mongoDatabase;
     private boolean useMongo;
+    private String tableName;
 
-    public DatabaseManager(Class<T> clazz, boolean useMongo) {
+    public DatabaseManager(Class<T> clazz, ConfigReader configReader) {
         this.clazz = clazz;
-        this.useMongo = useMongo;
+        this.useMongo = Optional.ofNullable(configReader.getProperty("mongo.enabled")).map(Boolean::getBoolean).orElse(false);
+        if (useMongo) {
+            this.tableName = Optional.ofNullable(configReader.getProperty("table")).orElseThrow(() -> new IllegalStateException("Table not found"));
+        }
         if (!useMongo)
             createVirtual();
         this.modelFactory = new ModelFactoryCreator<>();
@@ -43,7 +49,7 @@ public class DatabaseManager<T extends BaseModel> implements Database<T> {
         if (useMongo) {
             initConnection();
             Document document = mongoDatabase
-                    .getCollection(DatabaseConstants.TableName)
+                    .getCollection(tableName)
                     .find(new Document("id", id))
                     .first();
             return modelFactory.create(document, clazz);
@@ -55,7 +61,7 @@ public class DatabaseManager<T extends BaseModel> implements Database<T> {
     public void update(T entity) {
         if (useMongo) {
             initConnection();
-            mongoDatabase.getCollection(DatabaseConstants.TableName).updateOne(new Document("id", entity.getId()), modelFactory.create(entity));
+            mongoDatabase.getCollection(tableName).updateOne(new Document("id", entity.getId()), modelFactory.create(entity));
         }
         dictionary.put(entity.getId(), entity);
     }
@@ -64,7 +70,7 @@ public class DatabaseManager<T extends BaseModel> implements Database<T> {
     public void insert(T entity) {
         if (useMongo) {
             initConnection();
-            mongoDatabase.getCollection(DatabaseConstants.TableName).insertOne(modelFactory.create(entity));
+            mongoDatabase.getCollection(tableName).insertOne(modelFactory.create(entity));
         }
         dictionary.putIfAbsent(entity.getId(), entity);
     }
