@@ -22,7 +22,7 @@ public class ConfigReader {
     @SneakyThrows
     private Properties loadProperties() {
         Properties properties = new Properties();
-        try (InputStream is = getClass().getResourceAsStream(configFile)) {
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream(configFile)) {
             properties.load(is);
         }
         return properties;

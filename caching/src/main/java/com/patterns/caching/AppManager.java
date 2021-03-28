@@ -7,11 +7,19 @@ import com.patterns.caching.model.BaseModel;
 
 public class AppManager<T extends BaseModel> {
 
-    private final CachePolicy cachePolicy;
+    private CachePolicy cachePolicy;
     private final CacheManager<T> cacheManager;
 
     public AppManager(Database<T> databaseManager, CachePolicy cachePolicy) {
         this.cacheManager = new CacheManager<>(databaseManager);
+        this.cachePolicy = cachePolicy;
+    }
+
+    public AppManager(Database<T> databaseManager) {
+        this.cacheManager = new CacheManager<>(databaseManager);
+    }
+
+    public void setCachePolicy(CachePolicy cachePolicy) {
         this.cachePolicy = cachePolicy;
     }
 
@@ -37,5 +45,9 @@ public class AppManager<T extends BaseModel> {
         if (cachePolicy == CachePolicy.AROUND)
             cacheManager.writeAround(entity);
         else cacheManager.writeAside(entity);
+    }
+
+    public String printCacheContent() {
+        return cacheManager.print();
     }
 }
